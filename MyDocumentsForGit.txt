@@ -1,0 +1,53 @@
+Git Bash Komutları
+git config --global user.name “isim” eklemek
+git config --global user.email “email” eklemek
+mkdir firstPro -> dosya oluşturuyor.
+“cd ..” // veya “..” -> geri gelir bir önceki klasör
+touch ilkdefter.txt -> klasörün içine dosya oluşturur…
+git status -> git statüsünü sorgular
+git add  ilkdefter.txt -> dosyayı gite ekler..
+git commit -> dosyayı commit eder AMA // git commit -m “yorum” şeklinde yapılması gerekiyor yorum satırı da eklemek için.. yoksa yorum kısmını editörden eklemek gerekiyor..
+git log  -> commitin değiştirilme eklenme sürelerini gösteriliyor..
+git add . -> değişiklik olan tüm dosyaları ekler
+klasörün içerisinde .gitignore diye bir dosya oluşturulacak git’in içerisinde görmezden gelinecek dosyaları bu klasörün içine atmalıyız ki her seferinde commit ederken yüklenmesinler..
+git branch güncel branchleri gösterir.
+git branch feature dersek yeni feature adında bir branch oluşturur.
+git switch feature dersek branchi feature’e geçirir.
+Masterin içerisindeyken ->
+git merge feature dersek master ile feature’u birleştiririz.
+Fast forwarding – Kodlarımız iyi başına bişey gelsin istemiyoruz bu yüzden yeni branch oluşturuyoruz ordan devam ediyoruz beğenirsek asıl masterla merge edip birleştiriyoruz baktık beğenmedik silip masterden devamke.
+git restore yaparsak arada bir dosyanın içeriğiyle oynayıp add veya commit etmediysek ve aniden switch master veya herhangi branche geçtiysek ve dosya değişti gibi duruyorsa. Dosyayı eski haline çevirir.
+Aniden bir dosyadan çıkmamız gerekti ve biz bu dosyayı bitirmedik. git stash yapıyoruz ve o sırada yaptığımız şeyi git bizim için saveliyor.
+Peşinden biz master’a veya herhangi bir branch’e geçiş yapıyoruz işlemlerimizi yapıyoruz .
+geri dönüp git stash pop dediğimizde git kayıt ettiği kısmı bize geri getiriyor. 
+git stash list -> güncel olarak savelediğimizi sakladıklarımızı gösterir.
+git stash apply stast@{0} -> ((listte bize verdiği kısmı yazıyoruz apply dan sonra)) isteğim stash’i istediğimiz yere koyabiliyoruz
+git stash clear dersek tüm stashleri sileriz.
+
+git checkout HASHCODE yazıyoruz ve gitmek istediğimiz commite gidebiliyoruz daha sonrasında da, Master’ımız son committe kalıyor ve Head belirlediğimiz commite gidiyor. 
+Yapılabilecekler;
+•	git switch master yapar Master’a geri dönebiliriz
+•	git branch diyerek yeni bir branch açabiliriz. Yeni branch’i add commit ederek devam edebiliriz.
+•	git reset HASHCODE yazarsak seçtiğimiz hashcode’unun bulunduğu hashcode’una gider ve sonraki commitleri siler o commitlerde eklemiş olduğumuz bilgiler kalır.
+•	git reset --hard HASHCODE yazarsak seçtiğimiz hashcode’unun bulunduğu hashcode’una gider ve sonraki commitleri içerisindeki bilgilerle beraber komple siler. “Aşırı dikkat” önemli diğer ekip arkadaşlarıyla beraber yazılan kodlarda problem çıkarabilir..
+•	git revert HASHCODE yazarsak seçtiğimiz hashcode’unun logunu tutar, ve bir önceki committen devam etmemizi sağlar. Olası bir proje birleştiriminde conflic problemi oluşmasını engeller beğenmediğimiz commiti kaldırıp devam etmiş gibi oluruz. Logu ve tarihi bozmamış gibi olur. Biz onu kullanmadan projeye devam etmiş gibi oluruz.
+git diff yapmış olduğumuz değişiklikleri gösteriyor.
+git diff HEAD dersek head’in bulunduğu yerde oluşan değişiklikleri gösterir.
+git diff HASHCODE “boşluk” HASHCODE yaparsak iki commit arasındaki farklılıkları gösteriyor.
+git diff branchadı “boşluk” branchadı yaparsak iki branch arasındaki farklılıkları gösteriyor.
+git diff Rebase kısmını daha sonra EKLE 
+Git Hub Komutları
+GİTHUB üzerinden önce repo oluşturuyoruz,
+git remote add origin GİT HUB reponun linki
+git push -u origin master
+bu iki komutla veya git hub repo oluşturunca çıkan diğer örnek komutlarla push yapabiliriz..
+aynı repo içerisine aynı branch’de push yapacaksak direk git push yapıp devam edebiliriz.
+git push origin feat mesela feat branch’ine push yapar..
+olurda git hub üzerinden commitlerimizi merge edersek veya başkası tarafından gelen bir commiti Github Repomuzdaki projemize eklersek veya başkası yaparsa bu durumları ve bu şekilde yapılınca GitHubdaki commitler bir adım önde olabilir, bu  merge işlemi veya commit eklentisi bizim localimizde görünmezse bu değişiklikleri nasıl alırız
+yapılacaklar; 
+•	git fetch kontrol etmemize, geride olup olmadığımızı gösteriyor bize, dosyaları değiştirmeden önce incelememize kontrol etmemize yarıyor..
+•	git pull değişiklikleri bize getiriyor git pull = git fetch + git merge gibi anlamına geliyor.
+•	git clone REPONUN URL’si url’deki dosyayı al ve benim için bilgisayarıma clone’la manasına geliyor. Clone’lanan yere yardımcı olmak ve ileride olurda submit etmek istiyorsak clone kullanılır.
+•	Forklama gerekli değişiklikleri kendim yapıp projeye kendim devam etmek istiyorsam forklama yapılır ve forklama işleminden sonra dosyalar kendi repolarımın içerisine kaydedilir ve nereden forklandığı görünür.
+•	Forklama aslında başkalarının repolarına pull requests yapmamız onların repolarına yardımcı olmamız onların projelerine commit etmemiz için kullanıyoruz. Önce kendi repomuza çekiyoruz değişikliği yapıyoruz kendi repomuzda push edip peşinden forkladığımız kişiye pull request atarak dahil edip etmeyeceklerini sorabiliyoruz.
+Private Repo açtığımızda Collaborators kısmından kişileri email veya kullanıcı adıyla repolarımıza eklememiz gerekiyor oluşturmuş olduğumuz private repolara görüp commit atabilmeleri için. Push Access’e sahip olabiliyoruz. Bu durumda direk push yapabiliyoruz repoya, fakat en mantıklısı farklı bir branch üzerinden yapmamız çünkü oluşabilecek conflict’leri önler.
